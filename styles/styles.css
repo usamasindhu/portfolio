@@ -382,12 +382,17 @@ button:hover {
 }
 
 .about-stats .progress-bars .progress-bar .progress-con .progress .python {
-  width: 60%;
+  width: 40%;
 }
 
 .about-stats .progress-bars .progress-bar .progress-con .progress .flutter {
-  width: 90%;
+  width: 80%;
 }
+
+.about-stats .progress-bars .progress-bar .progress-con .progress .firebase {
+  width: 75%;
+}
+
 
 .about-stats .progress-bars .progress-bar .progress-con .progress .nextjs {
   width: 40%;
@@ -398,11 +403,11 @@ button:hover {
 }
 
 .about-stats .progress-bars .progress-bar .progress-con .progress .nodejs {
-  width: 70%;
+  width: 60%;
 }
 
 .about-stats .progress-bars .progress-bar .progress-con .progress .react {
-  width: 60%;
+  width: 50%;
 }
 
 .stat-title {
