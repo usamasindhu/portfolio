@@ -3,446 +3,1872 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usama Ishfaq – Software Engineer | Web, Mobile & Cloud Developer</title>
-    <meta name="description" content="Usama Ishfaq is a Software Engineer with 4+ years of experience in full-stack web, mobile, and cloud development. Skilled in ReactJS, NodeJS, NextJS, Flutter, Firebase, AWS, and LLM integration. Explore projects, portfolio, and career journey.">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Usama Ishfaq — Software Engineer | Full-Stack & Mobile Developer</title>
+    <meta name="description"
+        content="Portfolio of Usama Ishfaq, Software Engineer with 4+ years of experience in full-stack web, mobile, and cloud development. Expert in Flutter, ReactJS, NodeJS, NextJS, Firebase, AWS, and AI/LLM integration.">
+
+    <!-- Fonts -->
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #ff6b6b;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --shadow-primary: 0 20px 40px rgba(0, 212, 255, 0.2);
+            --shadow-secondary: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .light-mode {
+            --primary-bg: #f8fafc;
+            --secondary-bg: #ffffff;
+            --accent-primary: #0ea5e9;
+            --accent-secondary: #7c3aed;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 107, 107, 0.05) 0%, transparent 50%);
+            animation: gradientShift 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: rotate(180deg);
+            }
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-item {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            opacity: 1;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active i,
+        .nav-item:hover i {
+            color: white;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+            }
+
+            to {
+                filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.5));
+            }
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 2.5rem;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-primary);
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-secondary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-secondary);
+            border-color: var(--accent-primary);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .skill-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-left: 5rem;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6.5rem;
+            top: 1rem;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            border: 3px solid var(--primary-bg);
+            box-shadow: 0 0 0 3px var(--accent-primary);
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h3 {
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+        }
+
+        .timeline-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            min-width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                top: auto;
+                bottom: 2rem;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                background: var(--glass-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 50px;
+                padding: 0.5rem;
+                backdrop-filter: blur(10px);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-item {
+                margin-left: 0;
+            }
+
+            .timeline-line,
+            .timeline-dot {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading h3 {
+            color: var(--accent-primary);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Particle Animation */
+        @keyframes float {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Cursor Trail Effect */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: fadeOut 1s ease-out forwards;
+            z-index: 9998;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Additional Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .gap-1 {
+            gap: 0.5rem;
+        }
+
+        .gap-2 {
+            gap: 1rem;
+        }
+
+        .gap-3 {
+            gap: 1.5rem;
+        }
+
+        .gap-4 {
+            gap: 2rem;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .rounded {
+            border-radius: 8px;
+        }
+
+        .rounded-lg {
+            border-radius: 16px;
+        }
+
+        .rounded-full {
+            border-radius: 50%;
+        }
+
+        .shadow {
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .shadow-lg {
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* Focus States for Accessibility */
+        .nav-item:focus,
+        .theme-toggle:focus,
+        .btn:focus,
+        .social-link:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="img/hero.png" alt="">
-                </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span>Usama Ishfaq</span>
-                    A Flutter Developer.
-                </h1>
-                <p>
-                    I'm a Flutter Developer, I love to create beautiful and functional apps for the following OS.
-                    Android , iOS , Web , Windows , Linux , Mac.
-                    If you want an app from any of these OS, you can contact me.
-                </p>
-                <div class="btn-con">
-                    <a href="https://drive.usercontent.google.com/u/0/uc?id=1iGFsyjUZfU-g0h_QlkvDFPyv8YrU55N0&export=download"
-                        class="main-btn">
-                        <span class="btn-text">Download Resume</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>Information About me</h4>
-                    <p>
-                        I'm a software engineer and want to add my value in the field of computer science. I eagerly
-                        want to learn the
-                        advancements in technology and currently learning at a constant pace along with the work.
-                    </p>
-                    <div class="btn-con">
-                        <a href="https://drive.usercontent.google.com/u/0/uc?id=1iGFsyjUZfU-g0h_QlkvDFPyv8YrU55N0&export=download"
-                            class="main-btn">
-                            <span class="btn-text">Download Resume</span>
-                            <span class="btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">20+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">5+</p>
-                            <p class="small-text">Years of <br /> Programming experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">2+</p>
-                            <p class="small-text">Years of <br /> Software Industry</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">5+</p>
-                            <p class="small-text">Development <br /> Framworks</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">Flutter</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="flutter"></span>
-                            </div>
-                        </div>
-                    </div>
-<div class="progress-bar">
-    <p class="prog-title">Firebase</p>
-    <div class="progress-con">
-        <p class="prog-text">75%</p>
-        <div class="progress">
-            <span class="flutter"></span>
-        </div>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"
+        id="scrollProgress"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading"
+        id="loading">
+        <h3>Loading Portfolio...</h3>
+        <div class="spinner"></div>
     </div>
-</div>
-                    <div class="progress-bar">
-                        <p class="prog-title">NextJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">40%</p>
-                            <div class="progress">
-                                <span class="nextjs"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">NestJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">50%</p>
-                            <div class="progress">
-                                <span class="nestjs"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">NodeJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">60%</p>
-                            <div class="progress">
-                                <span class="nodejs"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">ReactJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">50%</p>
-                            <div class="progress">
-                                <span class="react"></span>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-                Here is some of my work that I've done in Flutter.
-            </p>
-            <div class="portfolios">
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port1.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Made With, </h3>
-                        <li> Flutter </li>
-                        <li> Firebase </li>
-                        <li> Machine Learning API </li>
 
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Live App</h3>
-                        <div class="icons">
-                            <a href="https://play.google.com/store/apps/details?id=com.azaan.mashrabenaab" class="icon">
-                                <i class="fab fa-google-play"></i>
-                            </a>
-                            <a href="https://apps.apple.com/pk/app/mashrab-e-naab/id6443939739" class="icon">
-                                <i class="fab fa-app-store-ios"></i>
-                            </a>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle"
+        id="themeToggle"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port5.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Made With, </h3>
-                        <li> Flutter </li>
-                        <li> Firebase </li>
-                        <li> OpenAI API </li>
-                    
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port4.png" alt="">
-                    </div>
-                   <div class="hover-items">
-                        <h3>Made With, </h3>
-                        <li> Flutter </li>
-                        <li> Firebase </li>
-                        <li> A Book store </li>
-
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port6.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Made With, </h3>
-                        <li> Flutter </li>
-                        <li> Django backend </li>
-                        <li> Driver Tracking App </li>
-                    
-                    </div>
-                </div>
-                <!-- <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port3.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Game Demo</h3>
-                        <div class="icons">
-
-                            <a href="https://www.youtube.com/watch?v=01FpWHejZeY&ab_channel=TheComputerScientist"
-                                class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
-        </section>
-        <!-- <section class="container" id="blogs">
-            <div class="blogs-content">
-                <div class="main-title">
-                    <h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
-                </div>
-                <div class="blogs">
-                    <div class="blog">
-                        <img src="img/port6.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Create Your Own Website
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Become an Expert in Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog2.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Become a Web Designer in 10 Days
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Debbuging made easy with Web Inspector
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Get started with Web Design and UI Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                This is what you need to know about Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-       -->
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
-                        <p>
-                            Feel free to get in touch with me. I am here for your queries.
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Location:</span>
-                                </div>
-                                <p>
-                                    Lahore, Pakistan
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-
-                                    <span>Email:</span>
-                                </div>
-                                <p>
-                                    &nbsp usamasandhu1642@gmail.com
-                                </p>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Education:</span>
-                                </div>
-                                <p>
-                                    <span>FAST NUCES Lahore</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-phone"></i>
-                                    <span>Mobile Number:</span>
-                                </div>
-                                <p>
-                                    <span> +923086830973</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    <span>Languages:</span>
-                                </div>
-                                <p>
-                                    <span> Urdu, English</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="https://github.com/usamasindhu" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.youtube.com/" target="_blank">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="submit-btn" type="submit">
-                        <a href="mailto:usamasandhu1642@gmail.com?subject = Feedback&body = Message" class=" main-btn">
-                            <span class="btn-text">Send Mail</span>
-                            <span class="btn-icon"><i class="fa fa-envelope"></i></span>
-                        </a>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="controls">
-        <div class="control active-btn" data-id="home">
+    <!-- Navigation -->
+    <nav class="nav-container"
+        role="navigation">
+        <div class="nav-item active"
+            data-section="hero"
+            tabindex="0"
+            role="button"
+            aria-label="Home">
             <i class="fas fa-home"></i>
         </div>
-        <div class="control" data-id="about">
+        <div class="nav-item"
+            data-section="about"
+            tabindex="0"
+            role="button"
+            aria-label="About">
             <i class="fas fa-user"></i>
         </div>
-        <div class="control" data-id="portfolio">
+        <div class="nav-item"
+            data-section="experience"
+            tabindex="0"
+            role="button"
+            aria-label="Experience">
             <i class="fas fa-briefcase"></i>
         </div>
-        <!-- <div class="control" data-id="blogs">
-            <i class="far fa-newspaper"></i>
-        </div> -->
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
+        <div class="nav-item"
+            data-section="skills"
+            tabindex="0"
+            role="button"
+            aria-label="Skills">
+            <i class="fas fa-code"></i>
         </div>
-    </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
-    <script src="app.js"></script>
+        <div class="nav-item"
+            data-section="portfolio"
+            tabindex="0"
+            role="button"
+            aria-label="Portfolio">
+            <i class="fas fa-laptop-code"></i>
+        </div>
+        <div class="nav-item"
+            data-section="contact"
+            tabindex="0"
+            role="button"
+            aria-label="Contact">
+            <i class="fas fa-envelope"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section active"
+        id="hero">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Usama Ishfaq</h1>
+                    <div class="subtitle">Software Engineer & Mobile Developer</div>
+                    <p class="description">
+                        Passionate Software Engineer with 4+ years of experience in full-stack web and mobile app
+                        development.
+                        Expert in Flutter, ReactJS, NodeJS, NextJS, Firebase, AWS, and AI/LLM integration.
+                        I build scalable, user-centric applications that solve real-world problems.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <a href="mailto:usamasandhu1642@gmail.com"
+                            class="btn">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                        <a href="https://drive.usercontent.google.com/u/0/uc?id=1iGFsyjUZfU-g0h_QlkvDFPyv8YrU55N0&export=download"
+                            class="btn btn-secondary"
+                            target="_blank">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://raw.githubusercontent.com/usamasindhu/assets/refs/heads/main/profile.jpg"
+                        alt="Usama Ishfaq - Software Engineer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section"
+        id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Get to know more about my journey, passion, and what drives me as a software engineer.</p>
+            </div>
+
+            <div class="about-grid">
+                <div>
+                    <div class="card animate-on-scroll">
+                        <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Who I Am</h3>
+                        <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+                            I am a passionate Software Engineer with 4+ years of experience in full-stack web and mobile
+                            development.
+                            I specialize in creating robust, scalable applications using modern technologies like
+                            Flutter, ReactJS,
+                            NodeJS, and cloud platforms.
+                        </p>
+                        <p style="line-height: 1.8;">
+                            My journey spans from freelancing to working with innovative companies like Turing.com as an
+                            LLM Engineer,
+                            where I've honed my skills in AI integration and cutting-edge development practices. I'm
+                            passionate about
+                            solving complex problems and building applications that make a real impact.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="stats-grid">
+                        <div class="stat-card card animate-on-scroll">
+                            <span class="number">25+</span>
+                            <span class="label">Projects Completed</span>
+                        </div>
+                        <div class="stat-card card animate-on-scroll">
+                            <span class="number">4+</span>
+                            <span class="label">Years Experience</span>
+                        </div>
+                        <div class="stat-card card animate-on-scroll">
+                            <span class="number">7+</span>
+                            <span class="label">Years Coding</span>
+                        </div>
+                        <div class="stat-card card animate-on-scroll">
+                            <span class="number">10+</span>
+                            <span class="label">Technologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section"
+        id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>My professional journey and the companies I've had the privilege to work with.</p>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <div class="company">XrossApps, Lahore</div>
+                        <div class="period">March 2025 - Present</div>
+                        <ul>
+                            <li>Integrated new technologies into existing systems, increasing capabilities and improving
+                                overall performance</li>
+                            <li>Providing comprehensive mobile app development services to clients</li>
+                            <li>Leading cross-platform development initiatives using Flutter and React Native</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>LLM Engineer</h3>
+                        <div class="company">Turing.com</div>
+                        <div class="period">September 2024 - March 2025</div>
+                        <ul>
+                            <li>Reviewed and enhanced LLM-generated content for accuracy and quality</li>
+                            <li>Provided critical feedback for optimizing AI-generated responses</li>
+                            <li>Worked across multiple programming languages (C++, C, Dart, Python)</li>
+                            <li>Contributed to improving AI model performance and reliability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <div class="company">Tib.Al</div>
+                        <div class="period">June 2023 - July 2024</div>
+                        <ul>
+                            <li>Developed robust mobile and web applications, specializing in image processing and
+                                medical technologies</li>
+                            <li>Engineered backend systems handling DICOM image processing and treatment suggestion
+                                algorithms</li>
+                            <li>Implemented AI-powered medical diagnostic features using machine learning APIs</li>
+                            <li>Collaborated with medical professionals to ensure accuracy and compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <div class="company">Innovage.io</div>
+                        <div class="period">June 2022 - July 2023</div>
+                        <ul>
+                            <li>Built cross-platform mobile apps and web applications using Flutter, NodeJS, and
+                                Firebase</li>
+                            <li>Designed RESTful APIs and real-time database solutions</li>
+                            <li>Implemented scalable cloud infrastructure on AWS and Firebase</li>
+                            <li>Mentored junior developers and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Freelance Software Engineer</h3>
+                        <div class="company">Fiverr & Upwork</div>
+                        <div class="period">April 2020 - May 2022</div>
+                        <ul>
+                            <li>Delivered 20+ client projects with high satisfaction rates</li>
+                            <li>Managed end-to-end application development from conception to deployment</li>
+                            <li>Built websites and mobile applications for diverse industries</li>
+                            <li>Maintained strong client relationships and received consistent 5-star reviews</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section"
+        id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>Technologies and tools I use to bring ideas to life and solve complex problems.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-flutter"></i>
+                    <h3>Flutter</h3>
+                    <p>Cross-platform mobile development</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-react"></i>
+                    <h3>ReactJS</h3>
+                    <p>Modern web development</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-node-js"></i>
+                    <h3>NodeJS</h3>
+                    <p>Backend development</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fas fa-fire"></i>
+                    <h3>Firebase</h3>
+                    <p>Cloud platform & database</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-aws"></i>
+                    <h3>AWS</h3>
+                    <p>Cloud infrastructure</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <p>AI/ML & backend development</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI/ML</h3>
+                    <p>Machine learning integration</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-docker"></i>
+                    <h3>Docker</h3>
+                    <p>Containerization</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Full-stack development</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fas fa-database"></i>
+                    <h3>MongoDB</h3>
+                    <p>NoSQL database</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fab fa-git-alt"></i>
+                    <h3>Git</h3>
+                    <p>Version control</p>
+                </div>
+                <div class="skill-item animate-on-scroll">
+                    <i class="fas fa-search"></i>
+                    <h3>ElasticSearch</h3>
+                    <p>Search & analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section"
+        id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Portfolio</h2>
+                <p>A showcase of projects that demonstrate my expertise in modern web and mobile development.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop"
+                        alt="AI Health App">
+                    <div class="portfolio-content">
+                        <h3>AI Health Diagnostics App</h3>
+                        <p>Medical technology application with DICOM image processing and AI-powered treatment
+                            suggestions. Built for Tib.Al with advanced medical imaging capabilities.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">DICOM</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=200&fit=crop"
+                        alt="Mashrab-e-Naab App">
+                    <div class="portfolio-content">
+                        <h3>Mashrab-e-Naab</h3>
+                        <p>Live mobile application available on both App Store and Google Play Store. Features real-time
+                            data synchronization and user engagement tools.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Android</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=200&fit=crop"
+                        alt="AI Chat App">
+                    <div class="portfolio-content">
+                        <h3>AI-Powered Chat Application</h3>
+                        <p>Intelligent chat application integrating OpenAI API with real-time messaging capabilities and
+                            natural language processing.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop"
+                        alt="E-commerce Bookstore">
+                    <div class="portfolio-content">
+                        <h3>E-commerce Bookstore</h3>
+                        <p>Full-featured online bookstore with payment integration, inventory management, and user
+                            reviews system.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">E-commerce</span>
+                            <span class="tech-tag">Payments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=200&fit=crop"
+                        alt="Driver Tracking App">
+                    <div class="portfolio-content">
+                        <h3>Driver Tracking System</h3>
+                        <p>Real-time driver tracking application with Django backend, live location updates, and route
+                            optimization features.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">GPS Tracking</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop"
+                        alt="Web Dashboard">
+                    <div class="portfolio-content">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Comprehensive web dashboard with data visualization, real-time analytics, and business
+                            intelligence features.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ReactJS</span>
+                            <span class="tech-tag">NodeJS</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Charts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section"
+        id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <p>Ready to bring your ideas to life? Let's discuss your next project and create something amazing
+                    together.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-info">
+                        <div class="contact-item animate-on-scroll">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>usamasandhu1642@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+92 308 6830973</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Lahore, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Education</h4>
+                                <p>FAST NUCES Lahore</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/usamasindhu"
+                            class="social-link"
+                            target="_blank"
+                            aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="social-link"
+                            target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.facebook.com/"
+                            class="social-link"
+                            target="_blank"
+                            aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/"
+                            class="social-link"
+                            target="_blank"
+                            aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/"
+                            class="social-link"
+                            target="_blank"
+                            aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card animate-on-scroll">
+                        <h3 style="color: var(--accent-primary); margin-bottom: 1.5rem;">Ready to Work Together?</h3>
+                        <p style="margin-bottom: 2rem; line-height: 1.8;">
+                            I'm always excited to take on new challenges and collaborate on innovative projects.
+                            Whether you need a mobile app, web application, or AI integration, I'm here to help
+                            bring your vision to life with cutting-edge technology and creative solutions.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <a href="mailto:usamasandhu1642@gmail.com?subject=Project Inquiry&body=Hello Usama, I'd like to discuss a project with you."
+                                class="btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </a>
+                            <a href="https://calendly.com/usamaishfaq"
+                                class="btn btn-secondary"
+                                target="_blank">
+                                <i class="fas fa-calendar"></i>
+                                Schedule Call
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        style="background: var(--secondary-bg); padding: 2rem 0; text-align: center; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p style="color: var(--text-secondary);">
+                © 2025 Usama Ishfaq. Made with <i class="fas fa-heart"
+                    style="color: var(--accent-tertiary);"></i> using modern web technologies.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('fade-out');
+                // Start other animations after loading
+                initializeAnimations();
+            }, 1500);
+        });
+
+        // Initialize all animations and interactions
+        function initializeAnimations() {
+            // Start typing effect
+            setTimeout(typeWriter, 500);
+
+            // Start particle system
+            setInterval(createParticle, 4000);
+
+            // Enable scroll progress
+            updateScrollProgress();
+
+            // Enable cursor trail
+            enableCursorTrail();
+        }
+
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                switchSection(item.dataset.section);
+            });
+
+            // Keyboard navigation
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    switchSection(item.dataset.section);
+                }
+            });
+        });
+
+        function switchSection(targetSection) {
+            // Remove active class from all nav items and sections
+            navItems.forEach(nav => nav.classList.remove('active'));
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Add active class to clicked nav item and target section
+            document.querySelector(`[data-section="${targetSection}"]`).classList.add('active');
+            document.getElementById(targetSection).classList.add('active');
+
+            // Reset scroll position
+            window.scrollTo(0, 0);
+
+            // Trigger animation reset
+            setTimeout(() => {
+                const animateElements = document.querySelectorAll(`#${targetSection} .animate-on-scroll`);
+                animateElements.forEach(el => {
+                    el.classList.remove('animate');
+                    setTimeout(() => el.classList.add('animate'), 100);
+                });
+            }, 100);
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        let isDark = true;
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        function toggleTheme() {
+            isDark = !isDark;
+            document.body.classList.toggle('light-mode');
+            themeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+
+            // Save theme preference
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            toggleTheme();
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dynamic typing effect
+        const subtitle = document.querySelector('.hero-content .subtitle');
+        const texts = [
+            'Software Engineer & Mobile Developer',
+            'Full-Stack Developer',
+            'AI/ML Engineer',
+            'Flutter Expert',
+            'Problem Solver'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            if (!subtitle) return;
+
+            const currentText = texts[textIndex];
+
+            if (isDeleting) {
+                subtitle.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                subtitle.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = 150;
+
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Particle system
+        function createParticle() {
+            if (Math.random() > 0.7) return; // Random chance
+
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: ${Math.random() * 6 + 2}px;
+                height: ${Math.random() * 6 + 2}px;
+                background: var(--accent-primary);
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0.6;
+                z-index: -1;
+                animation: float ${Math.random() * 3 + 3}s linear forwards;
+            `;
+
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.remove();
+                }
+            }, 6000);
+        }
+
+        // Scroll progress bar
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+
+            window.addEventListener('scroll', () => {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollTop = window.pageYOffset;
+                const progress = (scrollTop / scrollHeight) * 100;
+
+                scrollProgress.style.width = Math.min(progress, 100) + '%';
+            });
+        }
+
+        // Cursor trail effect
+        function enableCursorTrail() {
+            let lastTrailTime = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                const now = Date.now();
+                if (now - lastTrailTime < 50) return; // Throttle
+
+                lastTrailTime = now;
+
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX - 10 + 'px';
+                trail.style.top = e.clientY - 10 + 'px';
+
+                document.body.appendChild(trail);
+
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.remove();
+                    }
+                }, 1000);
+            });
+        }
+
+        // Enhanced portfolio item interactions
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+
+            // Add click handler for future modal functionality
+            item.addEventListener('click', function () {
+                // Placeholder for modal or detail view
+                console.log('Portfolio item clicked:', this.querySelector('h3').textContent);
+            });
+        });
+
+        // Smooth scroll behavior for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form handling for contact section
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                // Add analytics or tracking here if needed
+                console.log('Email link clicked');
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            const activeSection = document.querySelector('.section.active').id;
+            const sectionOrder = ['hero', 'about', 'experience', 'skills', 'portfolio', 'contact'];
+            const currentIndex = sectionOrder.indexOf(activeSection);
+
+            if (e.key === 'ArrowDown' && currentIndex < sectionOrder.length - 1) {
+                e.preventDefault();
+                switchSection(sectionOrder[currentIndex + 1]);
+            } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                e.preventDefault();
+                switchSection(sectionOrder[currentIndex - 1]);
+            }
+        });
+
+        // Performance optimization: Intersection Observer for images
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        // Lazy load images
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        // Error handling for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function () {
+                this.src = 'https://via.placeholder.com/400x200/1a1a1a/00d4ff?text=Image+Not+Found';
+            });
+        });
+
+        // Add resize handler for responsive adjustments
+        window.addEventListener('resize', () => {
+            // Recalculate any size-dependent animations
+            if (window.innerWidth <= 768) {
+                // Mobile adjustments
+                document.body.classList.add('mobile');
+            } else {
+                document.body.classList.remove('mobile');
+            }
+        });
+
+        // Initialize on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                // Additional initialization if needed
+            });
+        }
+
+        // Service Worker registration for PWA capability (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Register service worker if available
+                // navigator.serviceWorker.register('/sw.js');
+            });
+        }
+
+        console.log('🚀 Portfolio loaded successfully!');
+        console.log('🎨 Modern design with glassmorphism effects');
+        console.log('✨ Smooth animations and interactions enabled');
+        console.log('📱 Responsive design optimized for all devices');
+    </script>
 </body>
 
 </html>
